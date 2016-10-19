@@ -70,7 +70,7 @@ values in a row are typically different from the first value in the same row. Fo
 3 1 1 1
 ```
 ## Generated assembly
-I dumped the assemble for both the version compiled with hcc-lc and hcc-hsail, and included them in the repository. 
+I dumped the assembly for both the version compiled with hcc-lc and hcc-hsail using rocm-gdb, and included them in the repository. 
 In the hcc-lc version, all work items *first* do a `ds_read_b32`; then, the execution mask is set so that only the first
 work item does an atomic fetch and add, and writes it with a `ds_write_b32`. In other words: the order of the `ds_read_b32`
 and `ds_write_b32` is incorrect.
