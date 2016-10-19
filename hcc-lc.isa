@@ -1,0 +1,128 @@
+AMD HSA Code Object
+  Version 2.1
+ISA
+  Vendor AMD  Arch AMDGPU  Version 8:0:3
+
+Segments (total 3):
+  Segment (1)
+    Type: UNKNOWN (1)     Flags: 0x00000004
+    Image Size: 577     Memory Size: 577     Align: 4096     VAddr: 0
+  Segment (2)
+    Type: UNKNOWN (1)     Flags: 0x00000005
+    Image Size: 436     Memory Size: 436     Align: 4096     VAddr: 4096
+  Segment (3)
+    Type: UNKNOWN (1)     Flags: 0x00000006
+    Image Size: 96     Memory Size: 96     Align: 4096     VAddr: 8192
+
+Data Sections (total 2):
+  Section .AMDGPU.config (Index 7)
+    Type: 1     Flags: 0x00000000
+    Size:  0     Address: 0     Align: 0
+    Data:
+  Section .comment (Index 8)
+    Type: 1     Flags: 0x00000030
+    Size:  82     Address: 0     Align: 1
+    Data:
+      0000000: 0048 4343 2063 6c61 6e67 2076 6572 7369  .HCC clang versi
+      0000010: 6f6e 2033 2e35 2e30 2020 2862 6173 6564  on 3.5.0  (based
+      0000020: 206f 6e20 4843 4320 302e 3130 2e31 3633   on HCC 0.10.163
+      0000030: 3133 2d64 3930 3733 3861 2d31 3037 3034  13-d90738a-10704
+      0000040: 6634 204c 4c56 4d20 332e 352e 3073 766e  f4 LLVM 3.5.0svn
+      0000050: 2900 0000 0000 0000 0000 0000 0000 0000  ).
+
+Relocation Sections (total 0):
+
+Symbols (total 1):
+  Symbol ZZ4mainEN3_EC__019__cxxamp_trampolineEPiiiS0_ii (Index 4):
+    Section: .text     Section Offset: 0
+    VAddr: 4096     Size: 436     Alignment: 256
+    Kind: KERNEL     Linkage: PROGRAM     Definition: TRUE
+
+AMD Kernel Code for ZZ4mainEN3_EC__019__cxxamp_trampolineEPiiiS0_ii: 
+  amd_kernel_code_version_major                                = 1
+  amd_kernel_code_version_minor                                = 0
+  amd_machine_kind                                             = AMDGPU
+  amd_machine_version_major                                    = 8
+  amd_machine_version_minor                                    = 0
+  amd_machine_version_stepping                                 = 3
+  kernel_code_entry_byte_offset                                = 256
+  max_scratch_backing_memory_byte_size                         = 0
+  COMPUTE_PGM_RSRC1 (0x2c004100):
+    granulated_workitem_vgpr_count                             = 1
+    granulated_wavefront_sgpr_count                            = 1
+    priority                                                   = 0
+    float_round_mode_32                                        = NEAREST_EVEN
+    float_round_mode_16_64                                     = NEAREST_EVEN
+    float_denorm_mode_32                                       = FLUSH_SOURCE_OUTPUT
+    float_denorm_mode_16_64                                    = FLUSH_NONE
+    enable_dx10_clamp                                          = TRUE
+  COMPUTE_PGM_RSRC2 (0x80900000):
+    user_sgpr_count                                            = 8
+    enable_sgpr_workgroup_id_x                                 = TRUE
+    enable_vgpr_workitem_id                                    = X
+    granulated_lds_size                                        = 1
+  KERNEL_CODE_PROPERTIES (0xa000b000):
+    enable_sgpr_private_segment_buffer                         = TRUE
+    enable_sgpr_dispatch_ptr                                   = TRUE
+    enable_sgpr_kernarg_segment_ptr                            = TRUE
+    private_element_size                                       = DWORD (4 bytes)
+    is_ptr64                                                   = TRUE
+  workgroup_group_segment_byte_size                            = 4
+  kernarg_segment_byte_size                                    = 32
+  wavefront_sgpr_count                                         = 15
+  workitem_vgpr_count                                          = 6
+  kernarg_segment_alignment                                    = 16 (4)
+  group_segment_alignment                                      = 16 (4)
+  private_segment_alignment                                    = 16 (4)
+  wavefront_size                                               = 64 (6)
+
+Disassembly:
+  asic(VI)
+  type(CS)
+  
+  //
+  // amd_kernel_code_t for ZZ4mainEN3_EC__019__cxxamp_trampolineEPiiiS0_ii (000000000000 - 000000000100)
+  //
+  //
+  // ZZ4mainEN3_EC__019__cxxamp_trampolineEPiiiS0_ii:
+  //
+  v_cmp_ne_i32  vcc, 0, v0                              // 000000000100: 7D8A0080
+  s_and_saveexec_b64  s[2:3], vcc                       // 000000000104: BE82206A
+  s_xor_b64     s[2:3], exec, s[2:3]                    // 000000000108: 8882027E
+  v_mov_b32     v1, 0                                   // 00000000010C: 7E020280
+  s_mov_b32     m0, -1                                  // 000000000110: BEFC00C1
+  ds_read_b32   v1, v1                                  // 000000000114: D86C0000 01000001
+  s_waitcnt     lgkmcnt(0)                              // 00000000011C: BF8C007F
+  s_or_saveexec_b64  s[2:3], s[2:3]                     // 000000000120: BE822102
+  s_load_dwordx2  s[0:1], s[6:7], 0x00                  // 000000000124: C0060003 00000000
+  s_load_dword  s4, s[4:5], 0x04                        // 00000000012C: C0020102 00000004
+  s_waitcnt     lgkmcnt(0)                              // 000000000134: BF8C007F
+  s_and_b64     s[2:3], exec, s[2:3]                    // 000000000138: 8682027E
+  s_xor_b64     exec, exec, s[2:3]                      // 00000000013C: 88FE027E
+  v_mov_b32     v3, 1                                   // 000000000140: 7E060281
+  s_load_dwordx2  s[6:7], s[6:7], 0x10                  // 000000000144: C0060183 00000010
+  s_mov_b32     m0, -1                                  // 00000000014C: BEFC00C1
+  s_waitcnt     lgkmcnt(0)                              // 000000000150: BF8C007F
+  v_mov_b32     v1, s6                                  // 000000000154: 7E020206
+  v_mov_b32     v2, s7                                  // 000000000158: 7E040207
+  flat_atomic_add  v1, v[1:2], v3 glc                   // 00000000015C: DD090000 01000301
+  s_waitcnt     vmcnt(0) & lgkmcnt(0)                   // 000000000164: BF8C0070
+  v_mov_b32     v2, 0                                   // 000000000168: 7E040280
+  ds_write_b32  v2, v1                                  // 00000000016C: D81A0000 00000102
+  s_waitcnt     lgkmcnt(0)                              // 000000000174: BF8C007F
+  s_or_b64      exec, exec, s[2:3]                      // 000000000178: 87FE027E
+  s_barrier                                             // 00000000017C: BF8A0000
+  s_and_b32     s2, s4, 0x0000ffff                      // 000000000180: 8602FF04 0000FFFF
+  s_mul_i32     s8, s8, s2                              // 000000000188: 92080208
+  v_add_u32     v2, vcc, s8, v0                         // 00000000018C: 32040008
+  v_ashrrev_i32  v3, 31, v2                             // 000000000190: 2206049F
+  v_lshlrev_b64  v[2:3], 2, v[2:3]                      // 000000000194: D28F0002 00020482
+  v_add_u32     v4, vcc, s0, v2                         // 00000000019C: 32080400
+  v_mov_b32     v0, s1                                  // 0000000001A0: 7E000201
+  v_addc_u32    v5, vcc, v3, v0, vcc                    // 0000000001A4: 380A0103
+  flat_store_dword  v[4:5], v1                          // 0000000001A8: DC700000 00000104
+  s_endpgm                                              // 0000000001B0: BF810000
+end
+
+AMD HSA Code Object End
+
