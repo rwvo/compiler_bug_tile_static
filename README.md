@@ -31,7 +31,7 @@ unique location.
         ts = atomic_fetch_add(&dev_counter[0], 1);
       }
       // everyone reads the tile static variable that has just been set by the first workitem
-      // and stores it into 
+      // and stores it into a global array
       idx.barrier.wait();
       int val = ts;
       dev_values[idx.global] = val;
