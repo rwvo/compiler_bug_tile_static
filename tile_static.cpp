@@ -13,11 +13,11 @@ int main(){
   parallel_for_each(ext.tile(4), [=, &dev_values, &dev_counter](tiled_index<1> idx) [[hc]] {
       tile_static int ts;
       
-      if(not idx.local[0]){ // only first workitem sets tile static variable
+      if(not idx.local[0]){ // only first work item sets tile static variable
 	ts = atomic_fetch_add(&dev_counter[0], 1);
       }
-      // everyone reads the tile static variable that has just been set by the first workitem
-      // and stores it into 
+      // everyone reads the tile static variable that has just been set by the first work item
+      // and stores it into a global array 
       idx.barrier.wait();
       int val = ts;
       dev_values[idx.global] = val;
