@@ -7,7 +7,7 @@ To compile with hcc-lc: `make clean; make isa; ./tile_static`. This version demo
 To compile with hcc-hsail: `make clean; make hsail; ./tile_static`. This version gives correct output.
 
 ## Testing environment
-I compiled and ran all code examples on an i7 6700k with an AMD R9 Nano (Fiji) dGPU, with ROMc 1.2.
+I compiled and ran all code examples on an i7 6700k with an AMD R9 Nano (Fiji) dGPU, with ROCm 1.2.
 
 ## Code description
 * Code has four workgroups of four work items each
